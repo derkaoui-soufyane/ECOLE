@@ -4,7 +4,7 @@
 This is a full-stack web application built using Laravel for the backend and React.js for the frontend.  
 The project allows users to perform CRUD operations, authentication, and interact with a REST API.
 
----
+----
 
 ## ⚙️ Technologies Used
 
@@ -20,7 +20,7 @@ The project allows users to perform CRUD operations, authentication, and interac
 - React Router DOM
 - Tailwind CSS / Bootstrap
 
----
+----
 
 ## 📁 Project Structure
 
@@ -28,7 +28,7 @@ project-root/
 ├── backend/   (Laravel API)
 └── frontend/  (React App)
 
----
+----
 
 ## 🚀 Features
 
@@ -38,7 +38,7 @@ project-root/
 - API communication between frontend and backend
 - Responsive UI
 
----
+----
 
 ## 🛠️ Installation Guide
 
