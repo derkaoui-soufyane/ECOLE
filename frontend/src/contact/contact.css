@@ -1,0 +1,144 @@
+.contact-container {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  color: white;
+  font-family: sans-serif;
+}
+
+
+.contact-top {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-top p {
+  max-width: 800px;
+  margin: auto;
+  color: #000000;
+  line-height: 1.7;
+}
+.contact-bottom {
+  
+  justify-content: center;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.contact-bottom-left {
+  flex: 1;
+}
+
+.contact-form {
+    margin-left:130px;
+    width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.contact-form input{
+    padding: 20px;
+}
+.contact-form input,
+.contact-form textarea {
+    border: 1px#b8b7b7 solid;
+  
+  background: #f0efee;
+  outline: none;
+  
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  color: rgb(0, 0, 0);
+}
+
+.contact-form textarea {
+  height: 350px;
+}
+
+.contact-form button {
+    margin-top: 30px;
+  background: #dbd8d3;
+  border: none;
+  padding: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #959390;
+}
+
+
+.contact-bottom-right {
+  display: flex;
+  justify-content: center;
+    margin-bottom: 125px;
+  flex: 1;
+  position: relative;
+}
+
+.contact-iframe {
+  width: 80%;
+  height: 100%;
+  min-height: 350px;
+  border: none;
+  border-radius: 20px;
+  filter: grayscale(60%) brightness(0.8);
+  transition: 0.4s;
+}
+
+.contact-iframe:hover {
+  filter: grayscale(0%);
+}
+
+.loc-corner {
+  position: absolute;
+  bottom: 15px;
+  right: 180px;
+  background: #111;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 12px;
+  border: 1px solid #222;
+}
+@media (width< 1000px ){
+  .contact-form {
+    margin-left:0px;
+    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.contact-bottom {
+  
+  justify-content: center;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.contact-bottom-right {
+    margin-bottom: 40px;
+  flex: 1;
+  
+  position: relative;
+}
+
+.contact-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+  filter: grayscale(60%) brightness(0.8);
+  transition: 0.4s;
+}
+.loc-corner {
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+  background: #111;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 12px;
+  border: 1px solid #222;
+}
+}

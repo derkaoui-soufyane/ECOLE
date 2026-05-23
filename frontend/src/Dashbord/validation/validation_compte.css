@@ -1,0 +1,350 @@
+/* ============================================================
+   VALIDATION COMPTE  — matches MdiOne dashboard design system
+   ============================================================ */
+
+/* ── Layout wrapper ── */
+.vc-wrapper {
+  background: white;
+  padding: 1.5rem 2rem 3rem;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Toast notification ── */
+.vc-toast {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: 10px;
+  font-size: 0.83rem;
+  font-weight: 500;
+  box-shadow: 0 4px 18px rgba(0,0,0,.12);
+  animation: vc-slide-in 0.25s ease;
+}
+.vc-toast--success { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+.vc-toast--danger  { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+
+.vc-toast-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.vc-toast--success .vc-toast-dot { background: #059669; }
+.vc-toast--danger  .vc-toast-dot { background: #dc2626; }
+
+@keyframes vc-slide-in {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Page header ── */
+.vc-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.vc-page-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.vc-page-icon {
+  width: 42px; height: 42px;
+  border-radius: 11px;
+  background: rgba(99,102,241,.12);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.vc-page-icon svg {
+  width: 20px; height: 20px;
+  stroke: #6366f1;
+  stroke-width: 1.8;
+}
+
+.vc-page-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary, #111827);
+  margin: 0 0 2px;
+}
+.vc-page-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #6b7280);
+  margin: 0;
+}
+
+/* ── Stats pill ── */
+.vc-stats-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+.vc-stat-pill {
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: rgba(99,102,241,.08);
+  color: #4f46e5;
+  border: 1px solid rgba(99,102,241,.2);
+}
+.vc-stat-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+}
+.vc-stat-dot--pending { background: #f59e0b; }
+
+/* ── Main card ── */
+.vc-card {
+  background: var(--card-bg, #fff);
+  border-radius: 16px;
+  border: 1px solid var(--border, #e5e7eb);
+  box-shadow: 0 1px 6px rgba(0,0,0,.05);
+  overflow: hidden;
+}
+
+/* ── Toolbar ── */
+.vc-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border, #e5e7eb);
+  background: var(--bg-subtle, #f9fafb);
+  flex-wrap: wrap;
+}
+
+.vc-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 380px;
+}
+.vc-search-icon {
+  position: absolute; left: 11px;
+  width: 15px; height: 15px;
+  stroke: #9ca3af; stroke-width: 2;
+  pointer-events: none;
+}
+.vc-search input {
+  width: 100%;
+  padding: 7px 2rem 7px 2rem;
+  border: 1px solid var(--border, #e5e7eb);
+  border-radius: 9px;
+  font-size: 0.83rem;
+  background: var(--card-bg, #fff);
+  color: var(--text-primary, #111827);
+  outline: none;
+  transition: border-color .18s, box-shadow .18s;
+}
+.vc-search input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,.12);
+}
+.vc-search input::placeholder { color: #9ca3af; }
+
+.vc-search-clear {
+  position: absolute; right: 10px;
+  background: none; border: none; cursor: pointer;
+  font-size: 0.72rem; color: #9ca3af; padding: 2px 4px;
+  line-height: 1;
+}
+.vc-search-clear:hover { color: #6b7280; }
+
+.vc-count {
+  font-size: 0.78rem;
+  color: var(--text-secondary, #6b7280);
+  white-space: nowrap;
+}
+
+/* ── Table ── */
+.vc-table-wrap {
+  overflow-x: auto;
+}
+
+.vc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+
+.vc-table thead tr {
+  background: var(--bg-subtle, #f9fafb);
+  border-bottom: 1px solid var(--border, #e5e7eb);
+}
+
+.vc-table th {
+  padding: 0.75rem 1.1rem;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary, #6b7280);
+  white-space: nowrap;
+}
+
+.vc-table tbody tr {
+  border-bottom: 1px solid var(--border, #f3f4f6);
+  transition: background .13s;
+}
+.vc-table tbody tr:last-child { border-bottom: none; }
+.vc-table tbody tr:hover { background: rgba(99,102,241,.03); }
+
+.vc-table td {
+  padding: 0.85rem 1.1rem;
+  vertical-align: middle;
+  color: var(--text-primary, #374151);
+}
+
+.vc-td-num {
+  color: var(--text-secondary, #9ca3af) !important;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ── Identity cell ── */
+.vc-identity {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.vc-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: .5px;
+}
+
+.vc-identity-text {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.vc-full-name {
+  font-weight: 600;
+  font-size: 0.84rem;
+  color: var(--text-primary, #111827);
+}
+.vc-meta {
+  font-size: 0.72rem;
+  color: var(--text-secondary, #9ca3af);
+}
+
+/* ── Phone cell ── */
+.vc-phone-cell {
+  display: flex; align-items: center; gap: 6px;
+  color: var(--text-secondary, #6b7280);
+  font-size: 0.82rem;
+}
+.vc-phone-cell svg {
+  width: 13px; height: 13px;
+  stroke: #9ca3af; stroke-width: 2;
+  flex-shrink: 0;
+}
+
+/* ── Email link ── */
+.vc-email-link {
+  color: #6366f1;
+  text-decoration: none;
+  font-size: 0.82rem;
+  transition: color .15s;
+}
+.vc-email-link:hover {
+  color: #4f46e5;
+  text-decoration: underline;
+}
+
+/* ── Action buttons ── */
+.vc-actions {
+  display: flex; gap: 6px; flex-wrap: wrap;
+}
+
+.vc-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 11px;
+  border-radius: 7px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: opacity .14s, transform .12s, box-shadow .14s;
+  white-space: nowrap;
+}
+.vc-btn svg {
+  width: 12px; height: 12px;
+  stroke-width: 2.5;
+}
+.vc-btn:hover  { opacity: .85; transform: translateY(-1px); }
+.vc-btn:active { transform: scale(.97); }
+
+.vc-btn--approve {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #a7f3d0;
+}
+.vc-btn--approve svg { stroke: #059669; }
+.vc-btn--approve:hover { background: #d1fae5; box-shadow: 0 2px 8px rgba(5,150,105,.15); }
+
+.vc-btn--reject {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #fecaca;
+}
+.vc-btn--reject svg { stroke: #dc2626; }
+.vc-btn--reject:hover { background: #fee2e2; box-shadow: 0 2px 8px rgba(220,38,38,.15); }
+
+/* ── Empty / loading state ── */
+.vc-state {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 4rem 2rem; gap: 1rem;
+  color: var(--text-secondary, #9ca3af);
+  font-size: 0.85rem;
+}
+
+.vc-spinner {
+  width: 32px; height: 32px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: vc-spin .75s linear infinite;
+}
+@keyframes vc-spin { to { transform: rotate(360deg); } }
+
+.vc-empty-icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex; align-items: center; justify-content: center;
+}
+.vc-empty-icon svg {
+  width: 20px; height: 20px;
+  stroke: #9ca3af; stroke-width: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .vc-wrapper { padding: 1rem; }
+
+  .vc-table th:nth-child(3),
+  .vc-table td:nth-child(3) { display: none; }
+
+  .vc-page-header { flex-direction: column; align-items: flex-start; }
+
+  .vc-actions { flex-direction: column; }
+  .vc-btn { justify-content: center; }
+}

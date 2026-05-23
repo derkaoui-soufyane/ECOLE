@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
+
+/* ─── Reuse the same design tokens as calend_etd.css ─── */
+:root {
+  --font: 'Sora', sans-serif;
+  --bg: #f4f3f0;
+  --surface: #ffffff;
+  --surface-2: #eeede9;
+  --surface-3: #e5e4df;
+  --border: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.15);
+  --text-1: #181714;
+  --text-2: #4a4843;
+  --text-3: #9a9893;
+  --accent: #1a1a1a;
+  --blue: #2563eb;
+  --blue-bg: #eff6ff;
+  --blue-bg-2: #dbeafe;
+  --blue-border: #bfdbfe;
+  --blue-text: #1d4ed8;
+  --green: #16a34a;
+  --green-bg: #f0fdf4;
+  --green-border: #86efac;
+  --green-text: #15803d;
+  --red: #dc2626;
+  --red-bg: #fef2f2;
+  --red-border: #fca5a5;
+  --red-text: #b91c1c;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ════════════════════
+   Page shell
+════════════════════ */
+.note-page {
+  font-family: var(--font);
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text-1);
+  padding: 32px 36px 80px;
+}
+
+/* ════════════════════
+   Page header  (mirrors .cal-header)
+════════════════════ */
+.note-header { margin-bottom: 28px; }
+.note-header__label {
+  font-size: 11px; font-weight: 600; color: var(--text-3);
+  text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 4px;
+}
+.note-header__title {
+  font-size: 26px; font-weight: 700; color: var(--text-1); letter-spacing: -0.04em;
+}
+
+/* ════════════════════
+   Stats strip  (mirrors .cal-stats)
+════════════════════ */
+.note-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.note-stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  position: relative; overflow: hidden;
+  transition: transform .15s, box-shadow .15s;
+  border-top: 3px solid transparent;
+}
+.note-stat:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.note-stat:nth-child(1) { border-top-color: rgba(0,0,0,0.15); }
+.note-stat:nth-child(2) { border-top-color: var(--green); }
+.note-stat:nth-child(3) { border-top-color: var(--red); }
+/* 4th stat (.note-stat--avg) gets its border-top set inline */
+
+.note-stat__num {
+  font-size: 30px; font-weight: 700; line-height: 1;
+  letter-spacing: -0.04em; color: var(--text-1); margin-bottom: 5px;
+}
+.note-stat__num--green { color: var(--green-text); }
+.note-stat__num--red   { color: var(--red-text); }
+.note-stat__lbl { font-size: 11px; font-weight: 500; color: var(--text-3); letter-spacing: 0.04em; }
+
+.note-badge-label {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-size: 10px; font-weight: 600;
+  border: 1px solid;
+}
+
+/* ════════════════════
+   Toolbar  (mirrors .cal-nav)
+════════════════════ */
+.note-toolbar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.note-toolbar__title {
+  font-size: 14px; font-weight: 600; color: var(--text-1);
+  letter-spacing: -0.02em;
+}
+
+/* Tabs  (mirrors .cal-view-toggle) */
+.note-tabs {
+  display: flex;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 2px;
+}
+.note-tab {
+  height: 26px; padding: 0 12px;
+  border: none; border-radius: 4px;
+  background: transparent; font-family: var(--font);
+  font-size: 11px; font-weight: 600; color: var(--text-3);
+  cursor: pointer;
+  transition: background .12s, color .12s, box-shadow .12s;
+}
+.note-tab.active {
+  background: var(--surface);
+  color: var(--text-1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.note-tab:hover:not(.active) { color: var(--text-2); }
+
+/* ════════════════════
+   Table card wrapper
+════════════════════ */
+.note-card-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+/* ════════════════════
+   Table layout
+════════════════════ */
+.note-table { width: 100%; }
+
+/* ── Header row ── */
+.note-table-head {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.2fr 1.4fr 40px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+}
+.note-th {
+  padding: 11px 8px;
+  font-size: 10px; font-weight: 600; color: var(--text-3);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.note-th--expand { padding: 0; }
+
+/* ── Data rows ── */
+.note-row-wrap {
+  border-bottom: 1px solid var(--border);
+  transition: background .12s;
+}
+.note-row-wrap:last-child { border-bottom: none; }
+.note-row-wrap:hover > .note-row { background: rgba(0,0,0,0.013); }
+.note-row-wrap.is-open > .note-row { background: var(--blue-bg); }
+
+.note-row {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1.2fr 1.4fr 40px;
+  align-items: center;
+  padding: 0 20px;
+  cursor: pointer;
+  transition: background .12s;
+  min-height: 64px;
+}
+
+.note-td {
+  padding: 12px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Matière column */
+.note-td--matiere {
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+.note-subject-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.note-subject-name {
+  font-size: 13px; font-weight: 700; color: var(--text-1);
+  letter-spacing: -0.02em;
+}
+.note-subject-coef {
+  font-size: 10px; color: var(--text-3); font-weight: 500; margin-top: 2px;
+}
+
+/* Notes column */
+.note-td--notes { flex-wrap: wrap; gap: 5px; }
+.note-chip {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 99px;
+  font-size: 11px; font-weight: 700;
+  border: 1px solid;
+  letter-spacing: -0.01em;
+}
+.note-no-note {
+  font-size: 13px; color: var(--text-3); font-weight: 500;
+}
+
+/* Average column */
+.note-td--avg { gap: 4px; }
+.note-avg-block {
+  display: flex; flex-direction: column; gap: 3px;
+}
+.note-avg-num {
+  font-size: 18px; font-weight: 700; letter-spacing: -0.04em; line-height: 1;
+}
+.note-avg-denom {
+  font-size: 10px; color: var(--text-3); font-weight: 500; margin-left: 1px;
+  display: inline;
+}
+
+/* Stars */
+.note-stars {
+  display: flex; gap: 2px; align-items: center;
+  margin-top: 2px;
+}
+
+/* Status column */
+.note-td--status {}
+.note-status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 11px; font-weight: 600;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+/* Expand chevron */
+.note-td--expand { justify-content: center; }
+.note-chev {
+  width: 22px; height: 22px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-3);
+  transition: transform .2s;
+}
+.note-chev svg { width: 14px; height: 14px; }
+.note-chev.is-open { transform: rotate(180deg); color: var(--blue-text); }
+
+/* ════════════════════
+   Expanded row detail
+════════════════════ */
+.note-row-detail {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-left: 3px solid;
+  padding: 16px 20px 18px 28px;
+  animation: noteSlideDown .18s ease;
+}
+@keyframes noteSlideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.note-detail-grid {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-bottom: 10px;
+}
+.note-detail-item {
+  min-width: 80px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  display: flex; flex-direction: column; gap: 4px;
+  text-align: center;
+  transition: transform .12s, box-shadow .12s;
+}
+.note-detail-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.note-detail-num {
+  font-size: 22px; font-weight: 700; letter-spacing: -0.04em; line-height: 1;
+}
+.note-detail-label {
+  font-size: 10px; font-weight: 600; opacity: 0.75;
+}
+.note-detail-item .note-stars { justify-content: center; }
+
+.note-detail-avg-line {
+  font-size: 12px; font-weight: 500; color: var(--text-3);
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+/* ════════════════════
+   Empty state
+════════════════════ */
+.note-empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--text-3);
+  font-size: 13px; font-weight: 500;
+}
+
+/* ════════════════════
+   Responsive
+════════════════════ */
+@media (max-width: 900px) {
+  .note-page { padding: 16px 16px 60px; }
+  .note-stats { grid-template-columns: repeat(2, 1fr); }
+  .note-table-head,
+  .note-row {
+    grid-template-columns: 1.8fr 1.4fr 1fr 0px 36px;
+  }
+  .note-th--status,
+  .note-td--status { display: none; }
+}
+@media (max-width: 600px) {
+  .note-stats { grid-template-columns: repeat(2, 1fr); }
+  .note-stats .note-stat--avg { grid-column: span 2; }
+  .note-table-head,
+  .note-row {
+    grid-template-columns: 1.8fr 1.4fr 1fr 36px;
+  }
+  .note-th--status, .note-td--status { display: none; }
+  .note-toolbar { flex-direction: column; align-items: flex-start; }
+  .note-tabs { width: 100%; justify-content: stretch; }
+  .note-tab { flex: 1; text-align: center; }
+  .note-avg-num { font-size: 15px; }
+  .note-chip { font-size: 10px; padding: 2px 7px; }
+  .note-detail-item { min-width: 70px; }
+}
